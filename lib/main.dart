@@ -9,9 +9,15 @@ void main() {
   );
 }
 
-class MatriculasHome extends StatelessWidget {
+class MatriculasHome extends StatefulWidget {
+  @override
+  State<MatriculasHome> createState() => _MatriculasHomeState();
+}
+
+class _MatriculasHomeState extends State<MatriculasHome> {
   List<String> names = ["ana", "paz", "luana"];
-  List<Map<String, dynamic>> people = [
+
+  List<Map<String, dynamic>> peopleList = [
     {"name": "Ana", "adress": "av 1245", "phone": "12345679"},
     {"name": "Lia", "adress": "av lima", "phone": "9751665"},
     {"name": "Maria", "adress": "av mlsis", "phone": "88888888"},
@@ -20,10 +26,27 @@ class MatriculasHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Matriculas App"),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
-          ...people.map((e) => ListTile(
+          ElevatedButton(
+            onPressed: () {
+              peopleList.add(
+                {
+                  "name": "Pedro",
+                  "adress": "av larco 789",
+                  "phone": "11111111",
+                  "DNI": "1234567"
+                },
+              );
+              setState(() {});
+            },
+            child: Text("Agregar"),
+          ),
+          ...peopleList.map((e) => ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Colors.cyan,
                   radius: 25,
