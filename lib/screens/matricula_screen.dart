@@ -67,10 +67,10 @@ class _MatriculasHomeState extends State<MatriculasHome> {
                   fecha: "14/01/2024",
                   hora: "11:05",
                   alumno: Person(
-                      name: "Juanita",
+                      name: "pedro",
                       address: "Avv cusco 123456",
                       phone: "987654321"),
-                  carrera: carrerasList[0],
+                  carrera: carrerasList[1],
                 ),
               );
               setState(() {});
@@ -87,9 +87,36 @@ class _MatriculasHomeState extends State<MatriculasHome> {
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
-              title: Text("${e.alumno.name} - ${e.alumno.phone}"),
+              title: Text("${e.alumno.name} - ${e.carrera.nombre}"),
               subtitle: Text(e.alumno.address),
-              trailing: Text(e.carrera.nombre),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      print("Editando....");
+                    },
+                    icon: Icon(
+                      Icons.edit,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      print("Eliminando....");
+                      // matriculasList.removeLast();
+                      // matriculasList.removeRange(0, 2);
+                      // matriculasList.removeAt(1);
+                      matriculasList.remove(e);
+                      setState(() {});
+                    },
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
