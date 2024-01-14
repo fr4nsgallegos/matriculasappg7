@@ -109,6 +109,23 @@ class _MatriculasHomeState extends State<MatriculasHome> {
                       },
                       icon: Icon(Icons.add),
                     ),
+                    IconButton(
+                      onPressed: () {
+                        print("eliminandooo INSTITUCIÓN............");
+                        institucioneslist.remove(institucionElement);
+                        setState(() {});
+                      },
+                      icon: Icon(Icons.delete),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        print("eliminandooo MATRICULAS............");
+                        institucionElement.matriculas.removeRange(
+                            0, institucionElement.matriculas.length);
+                        setState(() {});
+                      },
+                      icon: Icon(Icons.clear),
+                    ),
                   ],
                 ),
                 ...institucionElement.matriculas.map(
@@ -146,7 +163,7 @@ class _MatriculasHomeState extends State<MatriculasHome> {
                             // matriculasList.removeLast();
                             // matriculasList.removeRange(0, 2);
                             // matriculasList.removeAt(1);
-                            matriculasList.remove(e);
+                            institucionElement.matriculas.remove(e);
                             setState(() {});
                           },
                           icon: Icon(
